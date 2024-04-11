@@ -3,6 +3,7 @@
 using namespace std;
 
 int count_letters(string str);
+int count_words(string str);
 bool isALetter(char test);
 
 int main() {
@@ -12,6 +13,7 @@ int main() {
 	cout << "enter a quote to test: ";
 	getline(cin, userInput);
 	cout << "Letters in the quote: " << count_letters(userInput) << endl;
+	cout << "Words in the quote: " << count_words(userInput) << endl;
 }
 
 int count_letters(string str) {
@@ -23,6 +25,30 @@ int count_letters(string str) {
 	}
 	return letterCount;
 }
+
+int count_words(std::string str) {
+	int wordCounter = 0;
+	bool previousSpace = false;
+	const char space = ' ';
+
+	if (str.length() > 0) {
+		for (int i = 0; i < str.length(); i++) {
+			if (str[i] == space && !previousSpace) {
+				previousSpace = true;
+			}
+			if (str[i] != space && previousSpace) {
+				wordCounter++;
+				previousSpace = false;
+			}
+			if (str[i] != space && !previousSpace && i == 0) {
+				wordCounter++;
+			}
+		}
+		return wordCounter;
+	}
+	return 0;
+}
+
 
 bool isALetter(char test) {
 	if (test == 'a') {
