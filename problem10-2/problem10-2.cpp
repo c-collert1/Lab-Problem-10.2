@@ -14,6 +14,7 @@ int main() {
 	getline(cin, userInput);
 	cout << "Letters in the quote: " << count_letters(userInput) << endl;
 	cout << "Words in the quote: " << count_words(userInput) << endl;
+
 }
 
 int count_letters(string str) {
